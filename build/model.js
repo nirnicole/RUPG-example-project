@@ -14,24 +14,31 @@ class Api {
     callAll() {
         return __awaiter(this, void 0, void 0, function* () {
             let result;
-            let kanyePromise = $.ajax({
-                method: "GET",
-                url: "https://api.kanye.rest",
-                success: (data) => data
-            });
-            let kanyePromise2 = $.ajax({
-                method: "GET",
-                url: "https://api.kanye.rest",
-                success: (data) => data
-            });
-            yield Promise.all([kanyePromise, kanyePromise2])
+            let kanyePromise = this.yeApi();
+            let kanyePromise2 = this.yeApi();
+            let kanyePromise3 = this.yeApi();
+            yield Promise.all([kanyePromise, kanyePromise2, kanyePromise3])
                 .then(function (results) {
                 result = {
                     kanyeRes: results[0],
-                    kanyeRes2: results[1]
+                    kanyeRes2: results[1],
+                    kanyeRes3: results[2]
                 };
             });
             return result;
+        });
+    }
+    yeApi() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield $.ajax({
+                method: "GET",
+                url: "https://api.kanye.rest",
+                success: function (data) {
+                    console.log("hi");
+                    console.log(data.quote);
+                    return data.quate;
+                }
+            });
         });
     }
 }
