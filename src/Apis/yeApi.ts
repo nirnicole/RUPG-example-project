@@ -4,5 +4,7 @@ class yeApi extends Api{
         super(url, method, success)
     }
 
-
+    async processData(rawData: any){
+        return await rawData.quate
+    }
 }
