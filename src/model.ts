@@ -1,4 +1,4 @@
-class Api {
+class Apiclass {
 
     constructor(){
 

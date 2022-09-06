@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-class Api {
+class Apiclass {
     constructor() {
     }
     callAll() {
@@ -42,3 +42,9 @@ class Api {
         });
     }
 }
+const renderAll2 = function (str, str2) {
+    const source = $("#first-template").html();
+    const template = Handlebars.compile(source);
+    let newHTML = template({ text: str });
+    $("body").append(newHTML);
+};
