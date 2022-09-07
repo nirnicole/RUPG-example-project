@@ -14,4 +14,8 @@ class Api {
             success: data => data
         });
     }
+    processData(rawData) {
+        this.proccesedData = rawData;
+        return this;
+    }
 }

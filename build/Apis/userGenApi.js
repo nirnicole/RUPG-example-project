@@ -15,17 +15,17 @@ class userGenApi extends Api {
     }
     getData() {
         return __awaiter(this, void 0, void 0, function* () {
+            //proccesing
             return yield this.callApiAjax();
         });
     }
+    //override
     processData(rawData) {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.userList = yield JSON.parse(JSON.stringify(rawData));
-            this.userList = this.userList.map(u => (this.computeUser(u)));
-            this.mainUser = this.userList[0];
-            this.userList.shift();
-            return this;
-        });
+        this.userList = JSON.parse(JSON.stringify(rawData));
+        this.userList = this.userList.map(u => (this.computeUser(u)));
+        this.mainUser = this.userList[0];
+        this.userList.shift();
+        return this;
     }
     computeUser(rawUser) {
         let user = {

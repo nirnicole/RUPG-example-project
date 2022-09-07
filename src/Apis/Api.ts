@@ -1,8 +1,10 @@
 class Api {
 
-     url: string =""
-     method: string =""
-     success: (data: any)=> any
+     private url: string =""
+     private method: string =""
+     private success: (data: any)=> any
+
+     proccesedData: any 
 
     constructor(url: string, method: string, success: (data: any)=> any){
         this.url = url
@@ -16,5 +18,10 @@ class Api {
             url:  this.url,
             success: data => data
         })
+    }
+
+    processData(rawData: any){
+        this.proccesedData = rawData
+        return this
     }
 }
