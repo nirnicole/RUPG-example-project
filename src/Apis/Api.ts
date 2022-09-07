@@ -1,8 +1,8 @@
 class Api {
 
-     private url: string =""
-     private method: string =""
-     private success: (data: any)=> any
+     url: string =""
+     method: string =""
+     success: (data: any)=> any
 
      proccesedData: any 
 

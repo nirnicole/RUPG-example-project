@@ -5,7 +5,7 @@ class yeApi extends Api{
     }
 
     processData(rawData: any){
-        this.processData = rawData.quote
+        this.proccesedData = rawData.quote
         return this
     }
 }

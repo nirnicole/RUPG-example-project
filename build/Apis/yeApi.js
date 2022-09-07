@@ -4,7 +4,7 @@ class yeApi extends Api {
         super(url, method, success);
     }
     processData(rawData) {
-        this.processData = rawData.quote;
+        this.proccesedData = rawData.quote;
         return this;
     }
 }

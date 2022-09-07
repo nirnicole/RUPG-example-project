@@ -29,7 +29,7 @@ const rupgModel = function () {
                 users: usersInstance.processData(results.userPromise.results),
                 kanye: yeInstance.processData(results.kanyeRes),
                 bacon: baconInstance.processData(results.baconPromise),
-                pkemon: pokeInstance.processData(results.pokePromise),
+                pokemon: pokeInstance.processData(results.pokePromise),
             }
 
             return proccesedData
@@ -41,7 +41,7 @@ const rupgModel = function () {
 
         let kanyePromise = yeInstance.callApiAjax()
         let baconPromise = baconInstance.callApiAjax()
-        let pokePromise = pokeInstance.callApiAjax()
+        let pokePromise = pokeInstance.getPokemaon(0)
         let pokePromise2 = pokeInstance2.callApiAjax()
         let userGenPromise = usersInstance.getData()
         
