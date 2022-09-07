@@ -8,11 +8,13 @@ class userGenApi extends Api{
     }
 
     async getData(){
+        //proccesing
         return await this.callApiAjax()
     }
 
-    async processData(rawData: any){
-        this.userList = await JSON.parse(JSON.stringify(rawData))
+    //override
+    processData(rawData: any){
+        this.userList = JSON.parse(JSON.stringify(rawData))
 
         this.userList =  this.userList.map( u =>  (this.computeUser(u)))
         this.mainUser = this.userList[0]
