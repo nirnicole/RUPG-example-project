@@ -21,16 +21,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 
     <script id="users-template" type="text/x-handlebars-template">
-      <ul>
-        {{#each users}}
-          <li>{{fname}} {{lname}}</li>
-        {{/each}}
-      </ul>
+      {{#each users}}
+        <div>{{fname}} {{lname}}</div>
+      {{/each}}
     </script>
 
     <script id="mainUser-template" type="text/x-handlebars-template">
-      <img src={{this.picture}} alt="" />
-      <ul>
+      <img src={{this.picture}} alt="" id="profile-pic" />
+      <ul id="user-info">
         <li>{{this.fname}} {{this.lname}}</li>
         <li>{{this.state}} {{this.city}}</li>
       </ul>
@@ -44,13 +42,13 @@
     </script>
 
     <script id="pokemon-template" type="text/x-handlebars-template">
-      <img src={{this.picture}} alt="" />
-      <h2>Favorie Pokemon: {{this.pname}}</h2>
+      <img src={{this.picture}} alt="" id="pokemon-image" />
+      <h2 id="pokemon-text">Favorie Pokemon: {{this.pname}}</h2>
     </script>
 
     <script id="aboutMe-template" type="text/x-handlebars-template">
-      <h2>About me</h2>
-      <h2>{{this.bacon}}</h2>
+      <h2 class="meat-text">About me</h2>
+      <h2 class="meat-text">{{this.bacon}}</h2>
     </script>
   </head>
 
@@ -65,6 +63,11 @@
       <div class="friends">
         <h4>Friends</h4>
         <div class="friends-container"></div>
+      </div>
+      <div class="footer">
+        <button class="button-49" role="button" onclick="generateUser()">
+          Generate User
+        </button>
       </div>
     </div>
 

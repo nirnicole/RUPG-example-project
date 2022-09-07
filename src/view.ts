@@ -8,11 +8,21 @@
 */
 const rupgRender = function () {
 
-    
+    //template design pattern
+    const renderPage = function(res: any){
+        console.log(res);
+        renderUsers(res.users.userList)
+        renderMainUser(res.users.mainUser)
+        renderQuote(res.kanye.proccesedData)
+        renderPokemon(res.pokemon.frontPicture, res.pokemon.pname)
+        renderAboutMe(res.bacon.proccesedData)
+    }
+
     const renderMainUser = function (mainUser: typeof User| undefined) {
         const source = $("#mainUser-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template(mainUser)
+        $(".user-container").empty()
         $(".user-container").append(newHTML)
       }
 
@@ -20,6 +30,7 @@ const rupgRender = function () {
         const source = $("#users-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template({ users })
+        $(".friends-container").empty()
         $(".friends-container").append(newHTML)
       }
 
@@ -27,13 +38,18 @@ const rupgRender = function () {
         const source = $("#yeQuote-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template({quote: quote})
+        $(".quote-container").empty()
         $(".quote-container").append(newHTML)
       }
 
       const renderPokemon = function (picture: string | undefined, pname: string | undefined) {
+        if(picture===undefined || pname===undefined)
+            return console.warn("bad input in pokemon api, undefined");
+        pname = pname.charAt(0).toUpperCase() + pname.slice(1);     //make first letter capital
         const source = $("#pokemon-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template({picture: picture, pname: pname})
+        $(".pokemon-container").empty()
         $(".pokemon-container").append(newHTML)
       }
 
@@ -42,10 +58,12 @@ const rupgRender = function () {
         const source = $("#aboutMe-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template({bacon: bacon})
+        $(".meat-container").empty()
         $(".meat-container").append(newHTML)
       }
 
       return {
+        renderPage,
         renderMainUser,
         renderUsers,
         renderQuote,
