@@ -73,3 +73,4 @@ const rupgModel = function () {
 //     let newHTML = template({ text: str })
 //     $("body").append(newHTML)
 //   }
+//# sourceMappingURL=model.js.map

@@ -43,16 +43,13 @@ const rupgRender = function () {
       }
 
       const renderPokemon = function (picture: string | undefined, pname: string | undefined) {
-        if(picture===undefined || pname===undefined)
-            return console.warn("bad input in pokemon api, undefined");
-        pname = pname.charAt(0).toUpperCase() + pname.slice(1);     //make first letter capital
+        Handlebars.registerHelper('makeCapital', (str) => `${str.charAt(0).toUpperCase() + str.slice(1)}`)
         const source = $("#pokemon-template").html()
         const template = Handlebars.compile(source)
         let newHTML = template({picture: picture, pname: pname})
         $(".pokemon-container").empty()
         $(".pokemon-container").append(newHTML)
       }
-
 
       const renderAboutMe = function (bacon: string | undefined) {
         const source = $("#aboutMe-template").html()

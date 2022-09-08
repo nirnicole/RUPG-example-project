@@ -8,3 +8,4 @@ class yeApi extends Api {
         return this;
     }
 }
+//# sourceMappingURL=yeApi.js.map

@@ -9,3 +9,4 @@ class baconApi extends Api {
         return this;
     }
 }
+//# sourceMappingURL=baconApi.js.map

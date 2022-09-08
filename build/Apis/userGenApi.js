@@ -39,3 +39,4 @@ class userGenApi extends Api {
     }
 }
 let User;
+//# sourceMappingURL=userGenApi.js.map

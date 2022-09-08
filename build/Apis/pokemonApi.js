@@ -28,3 +28,4 @@ class pokemonApi extends Api {
         return this;
     }
 }
+//# sourceMappingURL=pokemonApi.js.map

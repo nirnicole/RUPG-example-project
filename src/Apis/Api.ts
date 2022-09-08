@@ -12,12 +12,24 @@ class Api {
         this.success = success
     }
 
-    callApiAjax(){
-        return $.ajax({
+    async callApiAjax(){
+        let attempts = 0
+        let response: any = await $.ajax({
             method: this.method,
             url:  this.url,
-            success: data => data
+            success: result => result,
+            error: result => "error"
+        }).catch((error) =>{
+            console.warn(error);
+            if(attempts++ < 3){
+            console.log(`error in : ${this.constructor.name} trying again...`);
+            return this.callApiAjax()
+            }else{
+                console.log(`attampet limit reached(${attempts}), please check whats wrong`);
+            }
         })
+
+        return response
     }
 
     processData(rawData: any){
