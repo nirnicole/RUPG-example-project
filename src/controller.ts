@@ -9,8 +9,7 @@ $(".button-49").on("click", function(){
     generateUser()
 })
 
-const generateUser = function(){
-        let attempts = 0
+const generateUser = function(attempts: number = 0){
         const data = model.getData().then(res=>{
             //here the res data{users: Promise, kanye: Promise} is supposed ready to be passed to the renderer
             renderer.renderPage(res)
@@ -19,7 +18,7 @@ const generateUser = function(){
             console.warn(error);
             if(attempts++ < 3){
             console.log("trying again...");
-            generateUser()
+            generateUser(attempts)
             }else{
                 console.log(`attampet limit reached(${attempts}), please check whats wrong`);
             }

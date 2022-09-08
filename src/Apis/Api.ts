@@ -12,8 +12,7 @@ class Api {
         this.success = success
     }
 
-    async callApiAjax(){
-        let attempts = 0
+    async callApiAjax(attempts:number = 0){
         let response: any = await $.ajax({
             method: this.method,
             url:  this.url,
@@ -23,7 +22,7 @@ class Api {
             console.warn(error);
             if(attempts++ < 3){
             console.log(`error in : ${this.constructor.name} trying again...`);
-            return this.callApiAjax()
+            return this.callApiAjax(attempts)
             }else{
                 console.log(`attampet limit reached(${attempts}), please check whats wrong`);
             }
