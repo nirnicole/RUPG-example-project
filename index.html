@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="#" />
     <title>API Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
@@ -43,7 +44,7 @@
 
     <script id="pokemon-template" type="text/x-handlebars-template">
       <img src={{this.picture}} alt="" id="pokemon-image" />
-      <h2 id="pokemon-text">Favorie Pokemon: {{this.pname}}</h2>
+      <h2 id="pokemon-text">Favorie Pokemon: {{makeCapital this.pname}}</h2>
     </script>
 
     <script id="aboutMe-template" type="text/x-handlebars-template">
@@ -65,9 +66,7 @@
         <div class="friends-container"></div>
       </div>
       <div class="footer">
-        <button class="button-49" role="button" onclick="generateUser()">
-          Generate User
-        </button>
+        <button class="button-49" role="button">Generate User</button>
       </div>
     </div>
 
