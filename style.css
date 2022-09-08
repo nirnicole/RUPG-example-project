@@ -182,10 +182,10 @@ button {
 /* CSS */
 .button-49,
 .button-49:after {
-  width: 150px;
-  height: 76px;
-  line-height: 78px;
-  font-size: 20px;
+  width: 15vmax;
+  height: 5vmax;
+  line-height: 4.5vmax;
+  font-size: 1vmax;
   font-family: 'Bebas Neue', sans-serif;
   background: linear-gradient(45deg, transparent 5%, #1302f8 5%);
   border: 0;
@@ -269,14 +269,5 @@ button {
   100% {
     clip-path: var(--slice-1);
     transform: translate(0);
-  }
-}
-
-@media (min-width: 768px) {
-  .button-49,
-  .button-49:after {
-    width: 200px;
-    height: 86px;
-    line-height: 88px;
   }
 }
