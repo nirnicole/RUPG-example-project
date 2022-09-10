@@ -30,7 +30,7 @@ const rupgRender = function () {
       return {
         renderPage,
         renderComponent
-}
+      }
 }
 
 
