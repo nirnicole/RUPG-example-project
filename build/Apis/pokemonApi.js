@@ -9,23 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 class pokemonApi extends Api {
-    constructor(url = `https://pokeapi.co/api/v2/pokemon/1`, method = "GET", success = (data) => data) {
-        super(url, method, success);
+    constructor(apiInterface = new AjaxCall(), url = `https://pokeapi.co/api/v2/pokemon/1`) {
+        super(apiInterface, url);
     }
-    getPokemaon(id) {
+    //overriden
+    getData(id = 0) {
         return __awaiter(this, void 0, void 0, function* () {
+            //proccesing
             if (id === undefined || id === 0) {
                 id = Math.floor(Math.random() * 900 + 1);
             }
             this.url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
-            return yield this.callApiAjax();
+            let resolvedPromise = yield this.callApi();
+            return resolvedPromise;
         });
     }
     processData(rawData) {
-        this.proccesedData = rawData;
         this.pname = rawData.name;
         this.frontPicture = rawData.sprites.front_default;
-        return this;
+        let data = { picture: this.frontPicture, pname: this.pname };
+        this.proccesedData = data;
+        return this.proccesedData;
     }
 }
+let Pokemon;
 //# sourceMappingURL=pokemonApi.js.map

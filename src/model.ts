@@ -14,9 +14,9 @@ const rupgModel = function () {
     let usersInstance = new userGenApi()
 
     async function getData() {
-        let kanyePromise = yeInstance.callApiAjax()
-        let baconPromise = baconInstance.callApiAjax()
-        let pokePromise = pokeInstance.getPokemaon(0)
+        let kanyePromise = yeInstance.getData()
+        let baconPromise = baconInstance.getData()
+        let pokePromise = pokeInstance.getData()
         let userGenPromise = usersInstance.getData()
 
         return await Promise.all([kanyePromise, baconPromise, pokePromise, userGenPromise])

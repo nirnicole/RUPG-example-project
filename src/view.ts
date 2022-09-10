@@ -8,15 +8,15 @@
 */
 const rupgRender = function () {
 
-    //template design pattern
+    //template method
     const renderPage = function(res: any){
         console.log(res);
-        Handlebars.registerHelper('makeCapital', (str) => `${str.charAt(0).toUpperCase() + str.slice(1)}`)  //handle bar function to make pokemon capitalized
+        Handlebars.registerHelper('makeCapital', (str) => `${str.charAt(0).toUpperCase() + str.slice(1)}`)  //handle bar function to make a pokemon capitalized
         renderComponent("#mainUser-template", ".user-container", res.users.mainUser)
-        renderComponent("#users-template", ".friends-container", {users: res.users.userList})
-        renderComponent("#yeQuote-template", ".quote-container", {quote: res.kanye.proccesedData})
-        renderComponent("#pokemon-template", ".pokemon-container" , {picture: res.pokemon.frontPicture, pname: res.pokemon.pname})
-        renderComponent("#aboutMe-template", ".meat-container", {bacon: res.bacon.proccesedData})
+        renderComponent("#users-template", ".friends-container", res.users.userList)
+        renderComponent("#yeQuote-template", ".quote-container", res.kanye)
+        renderComponent("#pokemon-template", ".pokemon-container" , res.pokemon)
+        renderComponent("#aboutMe-template", ".meat-container", res.bacon)
     }
 
     const renderComponent = function(hbTemplate: string, elementToRender: string, data: Object){

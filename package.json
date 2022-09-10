@@ -5,6 +5,7 @@
     "@types/jquery": "^3.5.14"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "handlebars": "^4.7.7"
   }
 }

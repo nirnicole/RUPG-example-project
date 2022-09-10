@@ -1,0 +1,1 @@
+{"version":3,"file":"aioxCall.js","sourceRoot":"","sources":["../../src/Apis/aioxCall.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,MAAM,QAAQ;IAEJ,MAAM,CAAC,GAAU;;YACnB,OAAO,MAAM,CAAC,CAAC,IAAI,CAAC;gBAChB,MAAM,EAAE,KAAK;gBACb,GAAG,EAAG,GAAG;gBACT,OAAO,EAAE,MAAM,CAAC,EAAE,CAAC,MAAM;gBACzB,KAAK,EAAE,MAAM,CAAC,EAAE,CAAC,OAAO;aAC3B,CAAC,CAAA;QACN,CAAC;KAAA;CACJ"}

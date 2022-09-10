@@ -1,4 +1,5 @@
 "use strict";
+// import axios from "axios";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,22 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-class yeApi extends Api {
-    constructor(apiInterface = new AjaxCall(), url = "https://api.kanye.rest") {
-        super(apiInterface, url);
+/*
+this is an experimental feature,
+you can install axios and play with the dependency injection
+*/
+class AxiosCall {
+    constructor() {
     }
-    //overriden
-    getData() {
+    getApi(url) {
         return __awaiter(this, void 0, void 0, function* () {
-            //proccesing
-            let resolvedPromise = yield this.callApi();
-            return resolvedPromise;
+            // return await axios.get(url)
+            return undefined;
         });
     }
-    //overriden
-    processData(rawData) {
-        this.proccesedData = { quote: rawData.quote };
-        return this.proccesedData;
-    }
 }
-//# sourceMappingURL=yeApi.js.map
+//# sourceMappingURL=axiosCall.js.map

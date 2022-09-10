@@ -8,29 +8,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+/*
+this is the parent class of all api classes.
+every structual change will be made here and be inherited to each api class (see the error handeling for example).
+note that each api will also implement its uniqe data proccess according to its destination api.
+by default, all api calls are now a "GET" call.
+*/
 class Api {
-    constructor(url, method, success) {
+    constructor(callerInteface, url, method = "GET", success = (data) => data) {
         this.url = "";
         this.method = "";
+        this.callerInteface = callerInteface; //dependancy injection
         this.url = url;
         this.method = method;
         this.success = success;
     }
-    callApiAjax(attempts = 0) {
+    callApi(attempts = 0) {
         return __awaiter(this, void 0, void 0, function* () {
-            let response = yield $.ajax({
-                method: this.method,
-                url: this.url,
-                success: result => result,
-                error: result => "error"
-            }).catch((error) => {
-                console.warn(error);
+            let response = yield this.callerInteface
+                .getApi(this.url)
+                .catch((error) => {
                 if (attempts++ < 3) {
-                    console.log(`error in : ${this.constructor.name} trying again...`);
-                    return this.callApiAjax(attempts);
+                    console.warn(`error in : ${this.constructor.name} \n
+                        Attampts left: ${3 - attempts}\n
+                        trying again...`);
+                    return this.callApi(attempts);
                 }
                 else {
-                    console.log(`attampet limit reached(${attempts}), please check whats wrong`);
+                    console.log(`attampet limit reached, please check whats wrong`);
                 }
             });
             return response;

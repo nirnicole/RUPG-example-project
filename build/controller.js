@@ -8,14 +8,13 @@
 */
 const model = rupgModel();
 const renderer = rupgRender();
-$(".button-49").on("click", function () {
-    generateUser();
-});
 const generateUser = function (attempts = 0) {
-    model.getData().then(res => {
+    model.getData()
+        .then(res => {
         renderer.renderPage(res);
         return res;
-    }).catch((error) => {
+    })
+        .catch((error) => {
         console.warn(error);
         if (attempts++ < 3) {
             console.log("trying again...");
@@ -26,4 +25,7 @@ const generateUser = function (attempts = 0) {
         }
     });
 };
+$(".button-49").on("click", function () {
+    generateUser();
+});
 //# sourceMappingURL=controller.js.map

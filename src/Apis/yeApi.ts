@@ -1,11 +1,19 @@
 class yeApi extends Api{
 
-    constructor(url: string = "https://api.kanye.rest", method: string = "GET", success = (data: any)=>data){
-        super(url, method, success)
+    constructor(apiInterface:AxiosCall | AjaxCall = new AjaxCall(), url: string = "https://api.kanye.rest"){
+        super(apiInterface, url)
     }
 
+    //overriden
+    async getData(){
+        //proccesing
+        let resolvedPromise = await this.callApi()
+        return resolvedPromise
+    }
+
+    //overriden
     processData(rawData: any){
-        this.proccesedData = rawData.quote
-        return this
+        this.proccesedData = {quote: rawData.quote}
+        return this.proccesedData
     }
 }

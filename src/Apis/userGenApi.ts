@@ -1,25 +1,25 @@
 class userGenApi extends Api{
 
-    userList: typeof User[]  = [] 
+    userList: typeof UserList | undefined 
     mainUser: typeof User | undefined 
 
-    constructor(url: string = "https://randomuser.me/api/?results=7", method: string = "GET", success = (data: any)=>data){
-        super(url, method, success)
+    constructor(apiInterface:AxiosCall | AjaxCall = new AjaxCall(), url: string = "https://randomuser.me/api/?results=7"){
+        super(apiInterface, url)
     }
 
     async getData(){
         //proccesing
-        let resolvedPromise = await this.callApiAjax()
+        let resolvedPromise = await this.callApi()
         return resolvedPromise.results
     }
 
     //override
     processData(rawData: any){
-        this.userList = JSON.parse(JSON.stringify(rawData))
-        this.userList =  this.userList.map( u =>  (this.computeUser(u)))
-        this.mainUser = this.userList[0]
-        this.userList.shift()
-
+        let rawUserlist = JSON.parse(JSON.stringify(rawData))
+        rawUserlist =  rawUserlist.map( (u: any) =>  (this.computeUser(u)))
+        this.mainUser = rawUserlist[0]
+        rawUserlist.shift
+        this.userList = {users: rawUserlist}
         return this
     }
 
@@ -44,4 +44,8 @@ let User: {
     picture: string, 
     city: string ,
     state: string,
+}
+
+let UserList: {
+    users: typeof User []
 }

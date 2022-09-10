@@ -1,13 +1,20 @@
 class baconApi extends Api{
+    
+    constructor(apiInterface:AxiosCall | AjaxCall = new AjaxCall(), url: string = "https://baconipsum.com/api/?type=meat-and-filler&paras=1"){
+        super(apiInterface, url)
+    }
 
-    constructor(url: string = "https://baconipsum.com/api/?type=meat-and-filler&paras=1", method: string = "GET", success = (data: any)=>data){
-        super(url, method, success)
+    //overriden
+    async getData(){
+        //proccesing
+        let resolvedPromise = await this.callApi()
+        return resolvedPromise
     }
 
     //overriden
     processData(rawData: any){
-        this.proccesedData = rawData[0]
-        return this
+        this.proccesedData = {bacon: rawData[0]}
+        return this.proccesedData
     }
 
 }

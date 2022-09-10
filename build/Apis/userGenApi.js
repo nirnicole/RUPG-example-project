@@ -9,23 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 class userGenApi extends Api {
-    constructor(url = "https://randomuser.me/api/?results=7", method = "GET", success = (data) => data) {
-        super(url, method, success);
-        this.userList = [];
+    constructor(apiInterface = new AjaxCall(), url = "https://randomuser.me/api/?results=7") {
+        super(apiInterface, url);
     }
     getData() {
         return __awaiter(this, void 0, void 0, function* () {
             //proccesing
-            let resolvedPromise = yield this.callApiAjax();
+            let resolvedPromise = yield this.callApi();
             return resolvedPromise.results;
         });
     }
     //override
     processData(rawData) {
-        this.userList = JSON.parse(JSON.stringify(rawData));
-        this.userList = this.userList.map(u => (this.computeUser(u)));
-        this.mainUser = this.userList[0];
-        this.userList.shift();
+        let rawUserlist = JSON.parse(JSON.stringify(rawData));
+        rawUserlist = rawUserlist.map((u) => (this.computeUser(u)));
+        this.mainUser = rawUserlist[0];
+        rawUserlist.shift;
+        this.userList = { users: rawUserlist };
         return this;
     }
     computeUser(rawUser) {
@@ -40,4 +40,5 @@ class userGenApi extends Api {
     }
 }
 let User;
+let UserList;
 //# sourceMappingURL=userGenApi.js.map

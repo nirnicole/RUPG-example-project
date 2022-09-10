@@ -23,9 +23,9 @@ const rupgModel = function () {
     let usersInstance = new userGenApi();
     function getData() {
         return __awaiter(this, void 0, void 0, function* () {
-            let kanyePromise = yeInstance.callApiAjax();
-            let baconPromise = baconInstance.callApiAjax();
-            let pokePromise = pokeInstance.getPokemaon(0);
+            let kanyePromise = yeInstance.getData();
+            let baconPromise = baconInstance.getData();
+            let pokePromise = pokeInstance.getData();
             let userGenPromise = usersInstance.getData();
             return yield Promise.all([kanyePromise, baconPromise, pokePromise, userGenPromise])
                 .then(function (results) {
