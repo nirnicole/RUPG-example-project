@@ -11,55 +11,23 @@ const rupgRender = function () {
     //template design pattern
     const renderPage = function (res) {
         console.log(res);
-        renderUsers(res.users.userList);
-        renderMainUser(res.users.mainUser);
-        renderQuote(res.kanye.proccesedData);
-        renderPokemon(res.pokemon.frontPicture, res.pokemon.pname);
-        renderAboutMe(res.bacon.proccesedData);
+        Handlebars.registerHelper('makeCapital', (str) => `${str.charAt(0).toUpperCase() + str.slice(1)}`); //handle bar function to make pokemon capitalized
+        renderComponent("#mainUser-template", ".user-container", res.users.mainUser);
+        renderComponent("#users-template", ".friends-container", { users: res.users.userList });
+        renderComponent("#yeQuote-template", ".quote-container", { quote: res.kanye.proccesedData });
+        renderComponent("#pokemon-template", ".pokemon-container", { picture: res.pokemon.frontPicture, pname: res.pokemon.pname });
+        renderComponent("#aboutMe-template", ".meat-container", { bacon: res.bacon.proccesedData });
     };
-    const renderMainUser = function (mainUser) {
-        const source = $("#mainUser-template").html();
+    const renderComponent = function (hbTemplate, elementToRender, data) {
+        const source = $(hbTemplate).html();
         const template = Handlebars.compile(source);
-        let newHTML = template(mainUser);
-        $(".user-container").empty();
-        $(".user-container").append(newHTML);
-    };
-    const renderUsers = function (users) {
-        const source = $("#users-template").html();
-        const template = Handlebars.compile(source);
-        let newHTML = template({ users });
-        $(".friends-container").empty();
-        $(".friends-container").append(newHTML);
-    };
-    const renderQuote = function (quote) {
-        const source = $("#yeQuote-template").html();
-        const template = Handlebars.compile(source);
-        let newHTML = template({ quote: quote });
-        $(".quote-container").empty();
-        $(".quote-container").append(newHTML);
-    };
-    const renderPokemon = function (picture, pname) {
-        Handlebars.registerHelper('makeCapital', (str) => `${str.charAt(0).toUpperCase() + str.slice(1)}`);
-        const source = $("#pokemon-template").html();
-        const template = Handlebars.compile(source);
-        let newHTML = template({ picture: picture, pname: pname });
-        $(".pokemon-container").empty();
-        $(".pokemon-container").append(newHTML);
-    };
-    const renderAboutMe = function (bacon) {
-        const source = $("#aboutMe-template").html();
-        const template = Handlebars.compile(source);
-        let newHTML = template({ bacon: bacon });
-        $(".meat-container").empty();
-        $(".meat-container").append(newHTML);
+        let newHTML = template(data);
+        $(elementToRender).empty();
+        $(elementToRender).append(newHTML);
     };
     return {
         renderPage,
-        renderMainUser,
-        renderUsers,
-        renderQuote,
-        renderPokemon,
-        renderAboutMe
+        renderComponent
     };
 };
 //# sourceMappingURL=view.js.map

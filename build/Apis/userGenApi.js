@@ -16,7 +16,8 @@ class userGenApi extends Api {
     getData() {
         return __awaiter(this, void 0, void 0, function* () {
             //proccesing
-            return yield this.callApiAjax();
+            let resolvedPromise = yield this.callApiAjax();
+            return resolvedPromise.results;
         });
     }
     //override
