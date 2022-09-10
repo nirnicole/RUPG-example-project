@@ -15,14 +15,15 @@ const generateUser = function(attempts: number = 0){
             return res
         })
         .catch((error) =>{
-            console.warn(error);
             if(attempts++ < 3){
-            console.log("trying again...");
-            generateUser(attempts)
+                console.warn(`coudlnt load user.\n
+                Attampts left: ${3-attempts}\n
+                trying again...`);
+                generateUser(attempts)
             }else{
-                console.log(`attampet limit reached(${attempts}), please check whats wrong`);
-            }
-        })
+                console.log(`attampet limit reached, please check whats wrong`);
+        }
+    })
 }
 
 $(".button-49").on("click", function(){

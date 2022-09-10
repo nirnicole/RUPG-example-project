@@ -25,21 +25,23 @@ class Api {
     }
     callApi(attempts = 0) {
         return __awaiter(this, void 0, void 0, function* () {
-            let response = yield this.callerInteface
+            return yield this.callerInteface
                 .getApi(this.url)
                 .catch((error) => {
-                if (attempts++ < 3) {
-                    console.warn(`error in : ${this.constructor.name} \n
+                this.errorHandeler(this.callApi, attempts);
+            });
+        });
+    }
+    errorHandeler(method, attempts) {
+        if (attempts++ < 3) {
+            console.warn(`error in : ${this.constructor.name} \n
                         Attampts left: ${3 - attempts}\n
                         trying again...`);
-                    return this.callApi(attempts);
-                }
-                else {
-                    console.log(`attampet limit reached, please check whats wrong`);
-                }
-            });
-            return response;
-        });
+            return method(attempts);
+        }
+        else {
+            console.log(`attampet limit reached, please check whats wrong`);
+        }
     }
     processData(rawData) {
         this.proccesedData = rawData;

@@ -21,22 +21,24 @@ class Api {
     }
     
     async callApi(attempts:number = 0){
-        let response: any = await this.callerInteface
+        return await this.callerInteface
         .getApi(this.url)
         .catch((error) =>{
-            if(attempts++ < 3){
+            this.errorHandeler(this.callApi, attempts)
+        })
+    }
+
+    errorHandeler(method: any , attempts: number){
+        if(attempts++ < 3){
             console.warn(`error in : ${this.constructor.name} \n
                         Attampts left: ${3-attempts}\n
                         trying again...`);
-            return this.callApi(attempts)
+            return method(attempts)
             }else{
                 console.log(`attampet limit reached, please check whats wrong`);
             }
-        })
-
-        return response
     }
-
+    
     processData(rawData: any){
         this.proccesedData = rawData
         return this
