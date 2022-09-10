@@ -1,11 +1,12 @@
 # RUPG-example-project
-  Twitter is an online news and social networking site where people communicate in short messages called tweets.
-  this is mostly a frontend version that let you communicate only with yourself on the local memory.
-  maybe later on, we will add a nice backend to it! stay tuned.
+  Random user page app features 4 api calls that gets rendered to an awasome page!
+  each api call is beeing proccessed seperetly and then get rendered together wehn the page is loaded.
+  the structure of this code inspired by a MVC design while a lot of oop features are presented along the way,
+  enjoy!
 
 
 ## Table Of Contents
-- [Tweeter-Project](#Tweeter-Project)
+- [RUPG-Project](#RUPG-Project)
 * [features](#featurs)
 * [Screenshots](#screenshots)
 * [Direct-Link](#Direct-Link)
