@@ -21,4 +21,4 @@
 
 ## Direct-Link
 To see the final prodect up and running,
-[Click Here]([https://nirnicole.github.io/Tweeter-Project/src/](https://nirnicole.github.io/RUPG-example-project/))
+[Click Here](https://nirnicole.github.io/RUPG-example-project/)
